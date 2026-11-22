@@ -1,175 +1,458 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, ShieldCheck, HeartHandshake, Sparkles, CheckCircle2 } from 'lucide-react';
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  Award, 
+  ShieldCheck, 
+  Sparkles, 
+  Download, 
+  ArrowRight, 
+  PhoneCall, 
+  CheckCircle2, 
+  Scale,
+  FileText
+} from 'lucide-react';
 import { COMPANY_INFO } from '../../data/companyData';
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  onOpenPDF: () => void;
+  onOpenInquiry: (productName: string) => void;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInquiry }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const slides = [
+    // Slide 1: Soy Innovation (Crimson Ruby)
+    {
+      theme: 'from-[#7A0C22] via-[#9E1B32] to-[#B91C1C]',
+      badgeColor: 'bg-amber-400 text-burgundy-dark',
+      badgeText: 'Pioneering Soy Agro-Processing Since 2014',
+      title: 'BIG NUTRITION.',
+      highlight: 'BIGGER HEALTH!',
+      subtitle: 'Nutritious Foods for a Healthier Future',
+      desc: 'High-protein, affordable, and 100% plant-based soy foods crafted under hygienic ISO 22000:2018 standards in Bangladesh.',
+      productImage: '/images/fowzia-soy-protein-ball-pack.jpg',
+      subProductImage: '/images/fowzia-tofu-box.jpg',
+      taglineBadge: 'Starting from 100% Pure Soy',
+      warrantyBadge: 'World Bank Recognized',
+      ctaText: 'Explore Soy Range',
+      ctaLink: '/products?category=soy',
+      secondaryText: 'Download Profile (PDF)',
+      secondaryAction: 'pdf',
+      accentGlow: 'rgba(245, 158, 11, 0.4)'
+    },
+    // Slide 2: Dairy & Probiotic Drinks (Sapphire Blue)
+    {
+      theme: 'from-[#0A192F] via-[#1E3A8A] to-[#2563EB]',
+      badgeColor: 'bg-emerald-400 text-slate-900',
+      badgeText: 'Pure Cow Milk • Live Active Cultures',
+      title: 'AUTHENTIC FARM DAIRY',
+      highlight: '& DIGESTIVE DRINKS',
+      subtitle: 'Fowzia Special Borhani, Matha & Sweet Curd',
+      desc: 'Crafted with natural digestive herbs, mustard seeds, mint, and pure cultured curd. Available in 1.5L party feasts, 750ml, and 250ml.',
+      productImage: '/images/fowzia-borhani-yogurt-drinks.jpg',
+      subProductImage: '/images/fowzia-sweet-sour-curd-pots.jpg',
+      taglineBadge: 'Party & Feast Packs: 1.5L / 750ml / 250ml',
+      warrantyBadge: 'LDDP Matching Grant Winner',
+      ctaText: 'Browse Dairy & Curds',
+      ctaLink: '/products?category=dairy-drinks',
+      secondaryText: 'Order Wholesale Party Pack',
+      secondaryAction: 'inquiry',
+      accentGlow: 'rgba(56, 189, 248, 0.4)'
+    },
+    // Slide 3: Cheese & Frozen Quick Food (Royal Purple)
+    {
+      theme: 'from-[#3B0764] via-[#581C87] to-[#7E22CE]',
+      badgeColor: 'bg-yellow-300 text-purple-950',
+      badgeText: 'Chef-Grade Stretch & Golden Crisp',
+      title: 'ARTISANAL MOZZARELLA',
+      highlight: '& QUICK FROZEN FRIES',
+      subtitle: 'Pure Dairy Cheese & Golden Potato Fries',
+      desc: '100% cow milk stretchy mozzarella cheese (250g) and uniform golden crispy french fries (1kg). Ideal for homes, cafes, and restaurants.',
+      productImage: '/images/fowzia-mozzarella-cheese.jpg',
+      subProductImage: '/images/fowzia-french-fries.jpg',
+      taglineBadge: '100% Pure Cow Milk Mozzarella',
+      warrantyBadge: 'Food Safety Tested',
+      ctaText: 'Browse Frozen & Cheese',
+      ctaLink: '/products?category=cheese',
+      secondaryText: 'Request Restaurant Quote',
+      secondaryAction: 'inquiry',
+      accentGlow: 'rgba(216, 180, 254, 0.4)'
+    },
+    // Slide 4: FSDI & Women Empowerment (Lush Emerald)
+    {
+      theme: 'from-[#064E3B] via-[#047857] to-[#059669]',
+      badgeColor: 'bg-gold text-emerald-950',
+      badgeText: 'DAM, Ministry of Agriculture & World Bank Assisted',
+      title: 'EMPOWERING 35,000+',
+      highlight: 'WOMEN & YOUTHS',
+      subtitle: 'Fowzia Skill Development Institute (FSDI)',
+      desc: 'Practical entrepreneurship education, hands-on food processing techniques, and sustainable agro-business mentoring since 2023.',
+      productImage: '/images/fsdi-women-entrepreneurs-training-1.jpg',
+      subProductImage: '/images/world-bank-best-entrepreneur-trophy.jpg',
+      taglineBadge: '~35,000 Training Beneficiaries',
+      warrantyBadge: 'Women-Led Pioneer',
+      ctaText: 'Discover FSDI Institute',
+      ctaLink: '/fsdi',
+      secondaryText: 'Download Full Profile PDF',
+      secondaryAction: 'pdf',
+      accentGlow: 'rgba(52, 211, 153, 0.4)'
+    }
+  ];
+
+  // Auto-slide effect every 5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, slides.length]);
+
+  const slide = slides[currentSlide];
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#641126] via-[#8B1538] to-[#4A0C1B] text-white pt-12 pb-20 lg:pt-20 lg:pb-28">
-      {/* Decorative Golden Ambient Gradients & Rings */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/15 rounded-full blur-3xl pointer-events-none transform translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-burgundy-dark/60 rounded-full blur-3xl pointer-events-none" />
-      
-      {/* Subtle radial pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#D6A743_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section className="bg-slate-100 py-4 sm:py-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Grid: Left Slider + Right 2 Feature Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
           
-          {/* Left Hero Text Column (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* =========================================
+              LEFT COLUMN: DYNAMIC SLIDING BANNER (8 Cols)
+             ========================================= */}
+          <div 
+            className="lg:col-span-8 relative rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 min-h-[480px] sm:min-h-[520px] flex flex-col justify-between"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Background Gradient */}
+            <div className={`absolute inset-0 bg-gradient-to-r ${slide.theme} transition-all duration-700`} />
             
-            {/* Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-gold/40 text-gold-light text-xs font-semibold shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-gold" />
-              <span>Award-Winning Agro-Processing & Food Manufacturing</span>
-            </div>
+            {/* Ambient Decorative Lighting */}
+            <div 
+              className="absolute -top-20 -left-20 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40"
+              style={{ backgroundColor: slide.accentGlow }}
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15]">
-              Nutritious Foods for a <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-yellow-200">Healthier Future</span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg text-cream/90 max-w-2xl font-normal leading-relaxed mx-auto lg:mx-0">
-              Bringing nutritious, affordable, and high-quality soy and dairy-based food products to every household in Bangladesh. Certified by ISO 22000:2018 and recognized by the World Bank.
-            </p>
-
-            {/* Key Value Points */}
-            <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-cream/80 max-w-xl mx-auto lg:mx-0">
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg border border-white/5">
-                <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
-                <span>100% Hygienic Processing</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg border border-white/5">
-                <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
-                <span>Local Farmer Supervised</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg border border-white/5">
-                <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
-                <span>Affordable Daily Protein</span>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link
-                to="/products"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold to-gold-dark hover:from-gold-light hover:to-gold text-burgundy-dark font-extrabold text-sm uppercase tracking-wider shadow-lg hover:shadow-gold-glow hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group"
-              >
-                <span>Explore Our Products</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Slider Content */}
+            <div className="relative z-10 p-6 sm:p-10 flex-1 flex flex-col justify-between">
               
-              <Link
-                to="/about"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-gold/40 hover:border-gold backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <span>Discover Our Story</span>
-              </Link>
-            </div>
+              {/* Top Row: Category Tag & Trust Badge */}
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className={`px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-md ${slide.badgeColor}`}>
+                  {slide.badgeText}
+                </span>
 
-            {/* Mini Trust Bar */}
-            <div className="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-cream/70 border-t border-white/10">
-              <div className="flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-gold" />
-                <span>World Bank Awardee 2020</span>
+                <div className="flex items-center gap-2">
+                  <div className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5 shadow-sm">
+                    <ShieldCheck className="w-3.5 h-3.5 text-gold" />
+                    <span>ISO 22000:2018 Certified</span>
+                  </div>
+                </div>
               </div>
-              <span className="text-gold/40">•</span>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-gold" />
-                <span>ISO 22000:2018</span>
-              </div>
-              <span className="text-gold/40">•</span>
-              <div className="flex items-center gap-1.5">
-                <HeartHandshake className="w-4 h-4 text-gold" />
-                <span>35k+ Trained</span>
-              </div>
-            </div>
 
+              {/* Center Content: Split Text & Product Composition */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-6">
+                
+                {/* Left Text */}
+                <div className="md:col-span-7 space-y-4 text-white text-left">
+                  <div className="space-y-1">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] drop-shadow-md">
+                      {slide.title} <br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-white">
+                        {slide.highlight}
+                      </span>
+                    </h2>
+                    <p className="text-xs sm:text-sm text-amber-200 font-semibold tracking-wide">
+                      {slide.subtitle}
+                    </p>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-white/90 leading-relaxed max-w-md line-clamp-3">
+                    {slide.desc}
+                  </p>
+
+                  {/* Highlight Callout Pill */}
+                  <div className="inline-flex items-center gap-3 bg-black/35 backdrop-blur-md p-2 sm:p-2.5 rounded-2xl border border-white/15 shadow-lg">
+                    <div className="p-2 rounded-xl bg-gradient-to-r from-gold to-amber-500 text-burgundy-dark font-black text-xs">
+                      ★ VERIFIED
+                    </div>
+                    <div className="text-left pr-2">
+                      <div className="text-[10px] text-white/70 uppercase font-semibold">Quality Guarantee</div>
+                      <div className="text-xs font-bold text-white">{slide.taglineBadge}</div>
+                    </div>
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <Link
+                      to={slide.ctaLink}
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-gold via-amber-400 to-yellow-400 hover:from-yellow-300 hover:to-gold text-burgundy-dark font-black text-xs uppercase tracking-wider shadow-xl hover:shadow-gold-glow hover:scale-105 transition-all flex items-center gap-2 group"
+                    >
+                      <span>{slide.ctaText}</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+
+                    {slide.secondaryAction === 'pdf' ? (
+                      <button
+                        onClick={onOpenPDF}
+                        className="px-5 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-xs border border-white/30 backdrop-blur-md transition-all flex items-center gap-2"
+                      >
+                        <FileText className="w-3.5 h-3.5 text-gold-light" />
+                        <span>Company Profile (PDF)</span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => onOpenInquiry(slide.highlight)}
+                        className="px-5 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-xs border border-white/30 backdrop-blur-md transition-all flex items-center gap-2"
+                      >
+                        <PhoneCall className="w-3.5 h-3.5 text-gold-light" />
+                        <span>{slide.secondaryText}</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right Product Composition */}
+                <div className="md:col-span-5 relative flex items-center justify-center">
+                  <div className="relative w-full max-w-[280px] aspect-square rounded-3xl p-3 bg-white/10 backdrop-blur-xl border border-white/25 shadow-2xl flex items-center justify-center group">
+                    <img
+                      src={slide.productImage}
+                      alt={slide.title}
+                      className="max-h-full max-w-full object-contain filter drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-xl"
+                    />
+
+                    {/* Secondary Overlapping Thumbnail */}
+                    <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-2xl bg-white p-1.5 shadow-2xl border-2 border-gold/50 overflow-hidden hidden sm:block">
+                      <img
+                        src={slide.subProductImage}
+                        alt="Sub Product"
+                        className="w-full h-full object-contain rounded-xl"
+                      />
+                    </div>
+
+                    {/* Floating Trust Badge */}
+                    <div className="absolute -top-3 -right-3 bg-gold text-burgundy-dark font-black text-[10px] uppercase px-3 py-1.5 rounded-full shadow-lg border-2 border-white flex items-center gap-1">
+                      <Award className="w-3 h-3 text-burgundy-dark" />
+                      <span>{slide.warrantyBadge}</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Bottom Row: Slider Indicators & Institutional Partners Strip */}
+              <div className="pt-4 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+                
+                {/* Dots Pagination */}
+                <div className="flex items-center gap-2">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
+                        currentSlide === idx 
+                          ? 'w-8 bg-gold shadow-md' 
+                          : 'w-2.5 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Arrow Controls */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+                    className="p-2 rounded-full bg-black/30 hover:bg-black/60 text-white border border-white/20 transition-colors"
+                    aria-label="Previous Slide"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+                    className="p-2 rounded-full bg-black/30 hover:bg-black/60 text-white border border-white/20 transition-colors"
+                    aria-label="Next Slide"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* Institutional Partner Logos Text */}
+                <div className="text-[11px] text-white/80 font-medium hidden md:flex items-center gap-2">
+                  <span className="text-amber-300 font-bold">Partners:</span>
+                  <span>World Bank</span>
+                  <span>•</span>
+                  <span>DAM</span>
+                  <span>•</span>
+                  <span>BAU Gazipur</span>
+                  <span>•</span>
+                  <span>Solidaridad</span>
+                </div>
+
+              </div>
+
+            </div>
           </div>
 
-          {/* Right Visual Product Composition Column (5 Cols) */}
-          <div className="lg:col-span-5 relative">
+          {/* =========================================
+              RIGHT COLUMN: 2 STACKED PROMO CARDS (4 Cols)
+              (Exactly as requested in user reference image!)
+             ========================================= */}
+          <div className="lg:col-span-4 flex flex-col gap-4 lg:gap-5 justify-between">
             
-            {/* Main Composition Card */}
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              {/* Outer Golden Glow Card */}
-              <div className="relative rounded-3xl p-3 bg-gradient-to-b from-gold/30 via-burgundy/40 to-burgundy-dark/60 backdrop-blur-xl border border-gold/40 shadow-2xl">
-                
-                <div className="relative rounded-2xl overflow-hidden bg-white/10 aspect-[4/3] flex items-center justify-center">
-                  <img
-                    src="/images/fowzia-soy-protein-ball-pack.jpg"
-                    alt="Fowzia Soy Food Products"
-                    className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            {/* -------------------------------------
+                TOP CARD: SAPPHIRE BLUE DAIRY CARD
+                (Inspired by Hisense card in reference)
+               ------------------------------------- */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl p-5 sm:p-6 bg-gradient-to-br from-[#0F2B5C] via-[#1E40AF] to-[#2563EB] text-white flex flex-col justify-between min-h-[240px] border border-blue-400/30 group">
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-44 h-44 bg-cyan-400/20 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="flex items-start justify-between relative z-10">
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-cyan-300">
+                    FOWZIA DAIRY
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
+                    Fowzia Special Borhani
+                  </h3>
+                  <p className="text-xs text-blue-100 font-medium">
+                    Smart Digestive Probiotic Beverage
+                  </p>
+                </div>
+
+                {/* Top Stamp Badge */}
+                <div className="w-12 h-12 rounded-full bg-gold text-burgundy-dark font-black text-[9px] flex flex-col items-center justify-center uppercase text-center border-2 border-white shadow-md leading-tight shrink-0">
+                  <span>100%</span>
+                  <span>PURE</span>
+                </div>
+              </div>
+
+              {/* Middle: Cutout Image & Highlights */}
+              <div className="grid grid-cols-12 gap-3 items-center my-3 relative z-10">
+                <div className="col-span-7 space-y-2">
+                  <div className="inline-block px-2.5 py-1 rounded-lg bg-black/40 border border-cyan-400/30 text-xs">
+                    <span className="text-cyan-300 font-bold">Feast Sizes:</span>
+                    <div className="font-extrabold text-white text-sm">1.5L / 750ml / 250ml</div>
+                  </div>
                   
-                  {/* Floating Logo Watermark */}
-                  <div className="absolute top-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md border border-gold/40">
-                    <img src="/images/fowzia-logo.jpg" alt="Logo" className="w-6 h-6 object-contain" />
-                    <span className="text-burgundy font-bold text-xs">Fowzia Food</span>
+                  <div className="flex items-center gap-1.5 text-[11px] text-blue-100">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
+                    <span>Cultured Probiotic Enzymes</span>
                   </div>
-
-                  <div className="absolute bottom-4 left-4 right-4 text-left">
-                    <span className="text-gold text-[11px] font-bold uppercase tracking-wider">Premium Soy Series</span>
-                    <h3 className="text-white font-bold text-lg leading-tight">High-Protein Home Style Foods</h3>
+                  <div className="flex items-center gap-1.5 text-[11px] text-blue-100">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-300 shrink-0" />
+                    <span>Pure Full Cream Milk Base</span>
                   </div>
                 </div>
 
-                {/* Subgrid of 2 Genuine Feature Shots */}
-                <div className="grid grid-cols-2 gap-3 mt-3">
-                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-white/10 border border-white/10 group">
-                    <img 
-                      src="/images/fowzia-tofu-served-cubes.jpg" 
-                      alt="Fowzia Fresh Tofu" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                <div className="col-span-5 flex items-center justify-center">
+                  <div className="w-24 h-28 rounded-2xl bg-white/10 p-2 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/images/fowzia-borhani-yogurt-drinks.jpg"
+                      alt="Fowzia Borhani Drink"
+                      className="max-h-full max-w-full object-contain filter drop-shadow-md"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[11px] font-semibold text-white">Fresh Tofu Curd</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Action */}
+              <div className="pt-2 border-t border-white/15 flex items-center justify-between relative z-10">
+                <span className="text-[11px] font-semibold text-cyan-200">
+                  Wholesale & Party Catering
+                </span>
+                <button
+                  onClick={() => onOpenInquiry('Fowzia Special Borhani')}
+                  className="px-4 py-1.5 rounded-full bg-white text-blue-900 hover:bg-cyan-300 font-black text-xs uppercase tracking-wider transition-colors shadow-sm"
+                >
+                  Inquire Now
+                </button>
+              </div>
+            </div>
+
+            {/* -------------------------------------
+                BOTTOM CARD: ROYAL PURPLE SOY CARD
+                (Inspired by Haier card in reference)
+               ------------------------------------- */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl p-5 sm:p-6 bg-gradient-to-br from-[#4C1D95] via-[#6D28D9] to-[#9333EA] text-white flex flex-col justify-between min-h-[240px] border border-purple-400/30 group">
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-44 h-44 bg-pink-400/20 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="flex items-start justify-between relative z-10">
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-amber-300">
+                    FOWZIA SOY PROTEIN
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
+                    Fowzia Fresh Tofu
+                  </h3>
+                  <p className="text-xs text-purple-100 font-medium">
+                    200g Home-Style Pure Plant Protein
+                  </p>
+                </div>
+
+                {/* Top Badge */}
+                <div className="px-2.5 py-1 rounded-full bg-emerald-400 text-purple-950 font-black text-[10px] uppercase shadow-md shrink-0">
+                  ISO 22000
+                </div>
+              </div>
+
+              {/* Middle: Cutout Image & Highlights */}
+              <div className="grid grid-cols-12 gap-3 items-center my-3 relative z-10">
+                <div className="col-span-7 space-y-2">
+                  <div className="inline-block px-2.5 py-1 rounded-lg bg-black/40 border border-purple-400/30 text-xs">
+                    <span className="text-amber-300 font-bold">Protein Power:</span>
+                    <div className="font-extrabold text-white text-sm">Zero Cholesterol • High Fiber</div>
                   </div>
 
-                  <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-white/10 border border-white/10 group">
-                    <img 
-                      src="/images/fowzia-sweet-sour-curd-pots.jpg" 
-                      alt="Fowzia Clay Pot Curd" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  <div className="flex items-center gap-1.5 text-[11px] text-purple-100">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                    <span>Home-Style Ready to Cook</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] text-purple-100">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                    <span>Direct Marginal Farmer Sourced</span>
+                  </div>
+                </div>
+
+                <div className="col-span-5 flex items-center justify-center">
+                  <div className="w-24 h-28 rounded-2xl bg-white/10 p-2 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/images/fowzia-tofu-box.jpg"
+                      alt="Fowzia Tofu"
+                      className="max-h-full max-w-full object-contain filter drop-shadow-md"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                    <span className="absolute bottom-2 left-2 text-[11px] font-semibold text-white">Artisanal Sweet Curd</span>
                   </div>
                 </div>
-
               </div>
 
-              {/* Floating Verified Badge */}
-              <div className="absolute -bottom-6 -left-6 sm:-left-8 bg-white text-darkText p-3.5 rounded-2xl shadow-2xl border border-gold/50 flex items-center gap-3 animate-bounce [animation-duration:4s]">
-                <div className="w-12 h-12 rounded-xl bg-burgundy/10 flex items-center justify-center text-burgundy">
-                  <Award className="w-6 h-6 text-gold-dark" />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase font-bold text-mutedText tracking-wider">World Bank Recognized</div>
-                  <div className="text-xs font-bold text-burgundy-dark">Best Women Entrepreneur</div>
-                </div>
+              {/* Bottom Action */}
+              <div className="pt-2 border-t border-white/15 flex items-center justify-between relative z-10">
+                <span className="text-[11px] font-semibold text-purple-200">
+                  Retail & Supermarket Supply
+                </span>
+                <Link
+                  to="/products/fowzia-tofu-200g"
+                  className="px-4 py-1.5 rounded-full bg-gold text-purple-950 hover:bg-amber-300 font-black text-xs uppercase tracking-wider transition-colors shadow-sm"
+                >
+                  View Details
+                </Link>
               </div>
-
-              {/* Floating 19 Products Badge */}
-              <div className="absolute -top-6 -right-4 sm:-right-6 bg-burgundy-dark text-white p-3 rounded-2xl shadow-2xl border border-gold/50 flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-gold text-burgundy-dark font-black flex items-center justify-center text-base">
-                  19+
-                </div>
-                <div>
-                  <div className="text-[10px] text-gold-light uppercase font-bold">Catalog Range</div>
-                  <div className="text-xs font-semibold text-white">Pure & Hygienic</div>
-                </div>
-              </div>
-
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
   );

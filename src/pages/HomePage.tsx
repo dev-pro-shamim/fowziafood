@@ -4,6 +4,7 @@ import { StatsSection } from '../components/home/StatsSection';
 import { CompanyIntroSection } from '../components/home/CompanyIntroSection';
 import { CategorySection } from '../components/home/CategorySection';
 import { FeaturedProductsSection } from '../components/home/FeaturedProductsSection';
+import { PDFShowcaseSection } from '../components/home/PDFShowcaseSection';
 import { WhyChooseSection } from '../components/home/WhyChooseSection';
 import { InitiativesSection } from '../components/home/InitiativesSection';
 import { AchievementsPreviewSection } from '../components/home/AchievementsPreviewSection';
@@ -12,9 +13,16 @@ import { GalleryPreviewSection } from '../components/home/GalleryPreviewSection'
 import { FinalCTASection } from '../components/home/FinalCTASection';
 import { AchievementModal } from '../components/common/AchievementModal';
 import { WholesaleModal } from '../components/common/WholesaleModal';
-import { Achievement, Product, GalleryItem } from '../data/companyData';
+import { PDFViewerModal } from '../components/common/PDFViewerModal';
+import { Achievement, Product } from '../data/companyData';
 
-export const HomePage: React.FC = () => {
+interface HomePageProps {
+  onOpenPDF: () => void;
+  isPDFOpen: boolean;
+  onClosePDF: () => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ onOpenPDF, isPDFOpen, onClosePDF }) => {
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
   const [selectedProductForInquiry, setSelectedProductForInquiry] = useState<Product | null>(null);
   const [isWholesaleModalOpen, setIsWholesaleModalOpen] = useState(false);
@@ -24,39 +32,59 @@ export const HomePage: React.FC = () => {
     setIsWholesaleModalOpen(true);
   };
 
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* A & C. Hero Section */}
-      <HeroSection />
+  const handleOpenCustomInquiry = (name: string) => {
+    setSelectedProductForInquiry({
+      id: 'custom',
+      name: name,
+      category: 'Soy-Based',
+      categorySlug: 'soy',
+      size: 'Custom Wholesale / Party Pack',
+      image: '/images/fowzia-borhani-yogurt-drinks.jpg',
+      description: `Wholesale inquiry regarding ${name}`,
+      features: ['Hygienic standard', 'Verified quality']
+    });
+    setIsWholesaleModalOpen(true);
+  };
 
-      {/* E. Statistics Section */}
+  return (
+    <div className="flex flex-col min-h-screen bg-slate-50">
+      {/* 1. Dynamic Sliding Hero with Side Cards (Reference Layout) */}
+      <HeroSection 
+        onOpenPDF={onOpenPDF} 
+        onOpenInquiry={handleOpenCustomInquiry} 
+      />
+
+      {/* 2. Official Corporate Profile (PDF) Showcase */}
+      <PDFShowcaseSection onOpenPDF={onOpenPDF} />
+
+      {/* 3. Verified Statistics Section */}
       <StatsSection />
 
-      {/* D. Company Introduction */}
+      {/* 4. Company Introduction (Supervised by DAM & BAU) */}
       <CompanyIntroSection />
 
-      {/* F. Product Categories */}
+      {/* 5. Product Categories */}
       <CategorySection />
 
-      {/* G. Featured Products */}
+      {/* 6. Featured Products (8 Flagship items) */}
       <FeaturedProductsSection onOpenInquiry={handleOpenProductInquiry} />
 
-      {/* H. Why Choose Fowzia Food? */}
+      {/* 7. Why Choose Fowzia Food? */}
       <WhyChooseSection />
 
-      {/* I. Our Three Business Initiatives */}
+      {/* 8. Our Three Strategic Business Initiatives */}
       <InitiativesSection />
 
-      {/* J. Achievements & Recognition */}
+      {/* 9. Achievements & Recognition Preview */}
       <AchievementsPreviewSection onSelectAchievement={(ach) => setSelectedAchievement(ach)} />
 
-      {/* K. Social Impact */}
+      {/* 10. Social Impact */}
       <SocialImpactSection />
 
-      {/* L. Gallery Preview */}
+      {/* 11. Gallery Preview */}
       <GalleryPreviewSection />
 
-      {/* M. Final CTA */}
+      {/* 12. Final CTA */}
       <FinalCTASection />
 
       {/* Modals */}
@@ -72,6 +100,11 @@ export const HomePage: React.FC = () => {
           setIsWholesaleModalOpen(false);
           setSelectedProductForInquiry(null);
         }}
+      />
+
+      <PDFViewerModal
+        isOpen={isPDFOpen}
+        onClose={onClosePDF}
       />
     </div>
   );

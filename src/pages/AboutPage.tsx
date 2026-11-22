@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Award, 
   Target, 
   Eye, 
   Heart, 
   ShieldCheck, 
   CheckCircle2, 
-  Users, 
-  ArrowRight, 
   TrendingUp, 
   Sparkles,
   Building2,
-  Calendar,
-  Layers
+  FileText,
+  Download,
+  BookOpen
 } from 'lucide-react';
 import { COMPANY_INFO, TIMELINE, SWOT } from '../data/companyData';
+import { PDFViewerModal } from '../components/common/PDFViewerModal';
 
 export const AboutPage: React.FC = () => {
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
   return (
     <div className="bg-surface-light min-h-screen">
       
@@ -405,7 +405,44 @@ export const AboutPage: React.FC = () => {
           </div>
         </section>
 
+        {/* Official Document Banner */}
+        <section className="bg-gradient-to-r from-slate-900 via-burgundy-dark to-slate-900 rounded-3xl p-8 sm:p-10 text-white border border-gold/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="text-gold text-xs font-bold uppercase tracking-wider flex items-center justify-center md:justify-start gap-1.5">
+              <FileText className="w-4 h-4 text-gold" />
+              Primary Source of Truth
+            </span>
+            <h3 className="text-2xl font-bold">Fowzia Food Company Profile (PDF)</h3>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+              All company details, ISO 22000:2018 records, World Bank citations, organizational charts, and product listings are documented in our official 23-page profile.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <button
+              onClick={() => setIsPDFOpen(true)}
+              className="px-6 py-3 rounded-full bg-gold hover:bg-gold-light text-burgundy-dark font-black text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all flex items-center gap-2"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>Read Online (Flipbook)</span>
+            </button>
+            <a
+              href="/fowzia-food-company-profile.pdf"
+              download="Fowzia-Food-Company-Profile.pdf"
+              className="px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all flex items-center gap-2"
+            >
+              <Download className="w-4 h-4 text-gold-light" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+        </section>
+
       </div>
+
+      <PDFViewerModal
+        isOpen={isPDFOpen}
+        onClose={() => setIsPDFOpen(false)}
+      />
     </div>
   );
 };

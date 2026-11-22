@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnnouncementBar } from './components/common/AnnouncementBar';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
 import { ScrollToTop } from './components/common/ScrollToTop';
+import { PDFViewerModal } from './components/common/PDFViewerModal';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -17,16 +18,27 @@ import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
+
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-surface-light text-darkText font-sans selection:bg-gold selection:text-white">
+      <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-gold selection:text-slate-950">
         <ScrollToTop />
-        <AnnouncementBar />
-        <Navbar />
+        <AnnouncementBar onOpenPDF={() => setIsPDFOpen(true)} />
+        <Navbar onOpenPDF={() => setIsPDFOpen(true)} />
         
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onOpenPDF={() => setIsPDFOpen(true)} 
+                  isPDFOpen={isPDFOpen} 
+                  onClosePDF={() => setIsPDFOpen(false)} 
+                />
+              } 
+            />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:id" element={<ProductDetailPage />} />
@@ -40,6 +52,12 @@ export function App() {
         </main>
 
         <Footer />
+
+        {/* Global PDF Viewer Modal */}
+        <PDFViewerModal 
+          isOpen={isPDFOpen} 
+          onClose={() => setIsPDFOpen(false)} 
+        />
       </div>
     </BrowserRouter>
   );

@@ -152,6 +152,16 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <a 
+                  href="/fowzia-food-company-profile.pdf" 
+                  download="Fowzia-Food-Company-Profile.pdf" 
+                  className="text-amber-300 font-bold hover:underline flex items-center gap-1.5"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 text-gold" />
+                  <span>Company Profile (PDF)</span>
+                </a>
+              </li>
+              <li>
                 <Link to="/achievements" className="hover:text-gold transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-gold/60" />
                   Achievements & ISO

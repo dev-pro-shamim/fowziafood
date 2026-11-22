@@ -71,12 +71,22 @@ export const AchievementsPage: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-mutedText border-t border-gray-100">
-              <span><strong>Trade License:</strong> {COMPANY_INFO.tradeLicenseNo}</span>
-              <span>•</span>
-              <span><strong>TIN:</strong> {COMPANY_INFO.tin}</span>
-              <span>•</span>
-              <span><strong>VAT Reg:</strong> {COMPANY_INFO.vatReg}</span>
+            <div className="pt-2 flex flex-wrap items-center justify-between gap-4 text-xs text-mutedText border-t border-gray-100">
+              <div className="flex flex-wrap items-center gap-4">
+                <span><strong>Trade License:</strong> {COMPANY_INFO.tradeLicenseNo}</span>
+                <span>•</span>
+                <span><strong>TIN:</strong> {COMPANY_INFO.tin}</span>
+                <span>•</span>
+                <span><strong>VAT Reg:</strong> {COMPANY_INFO.vatReg}</span>
+              </div>
+              <a
+                href="/fowzia-food-company-profile.pdf"
+                download="Fowzia-Food-Company-Profile.pdf"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-burgundy text-white font-bold text-xs hover:bg-burgundy-dark transition-colors"
+              >
+                <FileText className="w-3.5 h-3.5 text-gold-light" />
+                <span>Download Certified Profile PDF</span>
+              </a>
             </div>
           </div>
         </section>

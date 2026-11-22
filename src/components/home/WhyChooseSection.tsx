@@ -12,34 +12,46 @@ import {
 export const WhyChooseSection: React.FC = () => {
   const reasons = [
     {
-      icon: <Award className="w-6 h-6 text-gold" />,
+      icon: <Award className="w-6 h-6 text-burgundy" />,
       title: "Quality-Focused Production",
-      description: "Stringent raw material selection from marginal farmers under the guidance of DAM and Bangladesh Agricultural University, Gazipur."
+      description: "Stringent raw material selection from marginal farmers under the guidance of DAM and Bangladesh Agricultural University, Gazipur.",
+      badge: "Pure Sourcing",
+      color: "bg-rose-50 text-burgundy"
     },
     {
-      icon: <ShieldCheck className="w-6 h-6 text-gold" />,
+      icon: <ShieldCheck className="w-6 h-6 text-emerald-600" />,
       title: "Hygienic Processing",
-      description: "ISO 22000:2018 food safety management system ensures cleanroom standards, hygienic packaging, and food-grade safety."
+      description: "ISO 22000:2018 food safety management system ensures cleanroom standards, hygienic packaging, and food-grade safety.",
+      badge: "ISO 22000:2018",
+      color: "bg-emerald-50 text-emerald-700"
     },
     {
-      icon: <Sparkles className="w-6 h-6 text-gold" />,
+      icon: <Sparkles className="w-6 h-6 text-amber-600" />,
       title: "Nutritious Food Products",
-      description: "Rich in complete plant protein, dietary fiber, essential vitamins, and calcium for everyday family health and wellness."
+      description: "Rich in complete plant protein, dietary fiber, essential vitamins, and calcium for everyday family health and wellness.",
+      badge: "Rich Protein",
+      color: "bg-amber-50 text-amber-700"
     },
     {
-      icon: <DollarSign className="w-6 h-6 text-gold" />,
+      icon: <DollarSign className="w-6 h-6 text-blue-600" />,
       title: "Affordable Pricing",
-      description: "A competitive pricing strategy tailored for middle-income consumers, ensuring wholesome nutrition is within reach of every household."
+      description: "A competitive pricing strategy tailored for middle-income consumers, ensuring wholesome nutrition is within reach of every household.",
+      badge: "Fair Value",
+      color: "bg-blue-50 text-blue-700"
     },
     {
-      icon: <HeartHandshake className="w-6 h-6 text-gold" />,
+      icon: <HeartHandshake className="w-6 h-6 text-purple-600" />,
       title: "Women-Led Entrepreneurship",
-      description: "Founded and spearheaded by World Bank recognized leader Mrs. Afroza Sultana, championing female business independence."
+      description: "Founded and spearheaded by World Bank recognized leader Mrs. Afroza Sultana, championing female business independence.",
+      badge: "World Bank Awardee",
+      color: "bg-purple-50 text-purple-700"
     },
     {
-      icon: <Users className="w-6 h-6 text-gold" />,
+      icon: <Users className="w-6 h-6 text-teal-600" />,
       title: "Community Development",
-      description: "Over 35,000 youth and women trained through FSDI, fostering local economic self-reliance and sustainable livelihoods."
+      description: "Over 35,000 youth and women trained through FSDI, fostering local economic self-reliance and sustainable livelihoods.",
+      badge: "35k+ Empowered",
+      color: "bg-teal-50 text-teal-700"
     }
   ];
 
@@ -49,39 +61,45 @@ export const WhyChooseSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-burgundy/10 text-burgundy text-xs font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-3.5 h-3.5 text-gold-dark" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider border border-slate-200">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
             Our Core Pillars
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-darkText tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             Why Choose <span className="text-burgundy">Fowzia Food?</span>
           </h2>
-          <p className="text-sm sm:text-base text-mutedText">
+          <p className="text-sm sm:text-base text-slate-600">
             Our unwavering commitment to hygiene, scientific food processing, fair agricultural sourcing, and social empowerment sets us apart.
           </p>
         </div>
 
         {/* 6 Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {reasons.map((item, idx) => (
             <div
               key={idx}
-              className="p-8 rounded-2xl bg-cream/50 hover:bg-white border border-gold/20 hover:border-gold shadow-sm hover:shadow-premium transition-all duration-300 group flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-gold/60 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-burgundy to-burgundy-dark flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                  {item.icon}
+                <div className="flex items-center justify-between">
+                  <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 border border-slate-200`}>
+                    {item.icon}
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-slate-700 border border-slate-200">
+                    {item.badge}
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-darkText group-hover:text-burgundy transition-colors">
+
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-burgundy transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-mutedText leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-gold/20 flex items-center gap-2 text-xs font-semibold text-burgundy">
-                <CheckCircle2 className="w-4 h-4 text-gold-dark" />
+              <div className="pt-6 border-t border-slate-200 flex items-center gap-2 text-xs font-bold text-emerald-700">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 <span>Verified Standard</span>
               </div>
             </div>

@@ -485,11 +485,53 @@ export const ACHIEVEMENTS: Achievement[] = [
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
+    id: "gal-hd-1",
+    title: "National Conference Product Showcase",
+    category: "Exhibitions",
+    image: "/images/hd/pic_07.jpg",
+    description: "High-resolution capture of Fowzia Food's agro-product display and stakeholder discussions."
+  },
+  {
+    id: "gal-hd-2",
+    title: "FSDI Practical Training Session",
+    category: "Training",
+    image: "/images/hd/pic_09.jpg",
+    description: "Empowering women and youths with hands-on food processing skills and entrepreneurship mentoring."
+  },
+  {
+    id: "gal-hd-3",
+    title: "International Technical Exchange",
+    category: "International",
+    image: "/images/hd/pic_04.jpg",
+    description: "Mrs. Afroza Sultana participating in high-level agro-processing and food innovation forums."
+  },
+  {
+    id: "gal-hd-4",
+    title: "Product Packaging & Retail Presentation",
+    category: "Products",
+    image: "/images/hd/pic_12.jpg",
+    description: "Showcase of premium soy, curd and dairy value-added products prepared for modern trade."
+  },
+  {
+    id: "gal-hd-5",
+    title: "Official Delegation & Institutional Review",
+    category: "Production",
+    image: "/images/hd/pic_13.jpg",
+    description: "Delegates reviewing hygienic food safety standards and laboratory operations."
+  },
+  {
+    id: "gal-hd-6",
+    title: "Award & Recognition Ceremony",
+    category: "Awards",
+    image: "/images/hd/pic_38.jpg",
+    description: "Celebration of women entrepreneurship and excellence in agro-food manufacturing."
+  },
+  {
     id: "gal-1",
     title: "Fowzia Tofu & Served Dish",
     category: "Products",
     image: "/images/fowzia-tofu-served-cubes.jpg",
-    description: "Freshly sliced home-style tofu cubes prepared for stir fry."
+    description: "Freshly sliced home-style tofu cubes prepared for healthy cooking."
   },
   {
     id: "gal-2",
