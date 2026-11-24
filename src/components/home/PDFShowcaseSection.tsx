@@ -103,7 +103,7 @@ export const PDFShowcaseSection: React.FC<PDFShowcaseSectionProps> = ({ onOpenPD
                 
                 {/* Header of Mock Document */}
                 <div className="flex flex-col items-center text-center space-y-2 pt-2">
-                  <img src="/images/fowzia-logo-cropped.png" alt="Logo" className="h-12 w-auto object-contain" />
+                  <img src="/images/fowzia-logo-clean.png" alt="Logo" className="h-12 w-auto object-contain" />
                   <div>
                     <span className="text-[11px] font-bold text-amber-800 uppercase tracking-widest block">Official Document</span>
                     <h3 className="font-black text-lg text-slate-900 leading-tight">Fowzia Healthy Food Products</h3>

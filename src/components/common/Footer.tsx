@@ -76,9 +76,9 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="inline-flex items-center gap-3 group">
               <img 
-                src="/images/fowzia-logo-cropped.png" 
+                src="/images/fowzia-logo-clean.png" 
                 alt="Fowzia Food Logo" 
-                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-2xs"
               />
               <div>
                 <h3 className="font-black text-lg sm:text-xl text-slate-900 tracking-tight leading-none">
