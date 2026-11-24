@@ -42,32 +42,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPDF }) => {
   return (
     <header className={`sticky top-0 z-40 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-orange-100/80 py-2.5' 
-        : 'bg-white border-b border-orange-100/50 py-3'
+        ? 'bg-white/98 backdrop-blur-md shadow-md border-b border-orange-200/80 py-2' 
+        : 'bg-white border-b border-orange-100 py-3'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           
-          {/* Logo & Brand Identity (No Break) */}
+          {/* Prominent Clear Logo & Brand Identity (Larger, No Awkward Circle Crop) */}
           <Link to="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="relative shrink-0">
-              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-[#9E1B32] via-[#F59E0B] to-[#9E1B32] shadow-sm group-hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/images/fowzia-logo.jpg" 
-                  alt="Fowzia Food Logo" 
-                  className="w-full h-full object-contain rounded-full bg-white"
-                />
-              </div>
-              <div className="absolute -bottom-1 -right-1 bg-amber-500 text-white font-extrabold text-[8px] px-1.5 py-0.2 rounded-full uppercase tracking-wider border border-white shadow-xs whitespace-nowrap">
-                2014
-              </div>
+            <div className="relative shrink-0 flex items-center">
+              <img 
+                src="/images/fowzia-logo-cropped.png" 
+                alt="Fowzia Food Official Logo" 
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300 filter drop-shadow-xs"
+              />
             </div>
             <div className="flex flex-col whitespace-nowrap">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-[#9E1B32] transition-colors leading-none">
-                FOWZIA <span className="text-[#9E1B32] font-black">FOOD</span>
+              <span className="font-black text-lg sm:text-xl lg:text-2xl tracking-tight text-slate-900 group-hover:text-[#9E1B32] transition-colors leading-none">
+                FOWZIA <span className="text-[#9E1B32]">FOOD</span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-amber-800/80 tracking-wider uppercase mt-0.5">
-                Healthy Food Products
+              <span className="text-[10px] sm:text-[11px] font-bold text-amber-600 tracking-wider uppercase mt-1">
+                Healthy Food Products • Est. 2014
               </span>
             </div>
           </Link>
@@ -82,8 +77,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPDF }) => {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-xl text-xs sm:text-[13px] font-semibold transition-all duration-200 relative whitespace-nowrap ${
                     isActive
-                      ? 'text-[#9E1B32] bg-orange-50/80 font-bold'
-                      : 'text-slate-700 hover:text-[#9E1B32] hover:bg-orange-50/40'
+                      ? 'text-[#9E1B32] bg-orange-100/70 font-bold'
+                      : 'text-slate-700 hover:text-[#9E1B32] hover:bg-orange-50/60'
                   }`
                 }
               >

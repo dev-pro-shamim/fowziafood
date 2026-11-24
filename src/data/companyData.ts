@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
     category: "Soy-Based",
     categorySlug: "soy",
     size: "200g",
-    image: "/images/fowzia-tofu-box.jpg",
+    image: "/images/hd/pic_02.jpg",
     description: "Authentic, fresh, high-protein tofu curd crafted through hygienic soy-milk coagulation. Rich in complete plant protein, calcium, and essential minerals.",
     features: ["100% Plant-Based Protein", "Rich in Calcium & Isoflavones", "Hygienically Packed", "No Added Preservatives"],
     isFeatured: true
@@ -112,7 +112,7 @@ export const PRODUCTS: Product[] = [
     category: "Soy-Based",
     categorySlug: "soy",
     size: "300g",
-    image: "/images/fowzia-soy-protein-ball-pack.jpg",
+    image: "/images/hd/pic_03.jpg",
     description: "Nutritious, savory soy protein balls pre-prepared for quick home meals, curries, and appetizers. An ideal source of wholesome vegetable protein for families.",
     features: ["High Protein Meat Alternative", "Easy to Cook & Pan-Fry", "Enriched with Fiber", "Convenient Home-Style Pack"],
     isFeatured: true
@@ -123,7 +123,7 @@ export const PRODUCTS: Product[] = [
     category: "Soy-Based",
     categorySlug: "soy",
     size: "700g (10 Pcs)",
-    image: "/images/fowzia-soy-paratha-pack.jpg",
+    image: "/images/hd/pic_04.jpg",
     description: "Multi-layered, flaky, golden parathas enriched with wholesome soybean flour for enhanced protein and fiber. Ready to heat and serve.",
     features: ["Made with Love - 10 Pcs Pack", "Soy Flour Enriched", "Crispy & Flaky Texture", "Nutritious Breakfast Solution"],
     isFeatured: true
@@ -134,7 +134,7 @@ export const PRODUCTS: Product[] = [
     category: "Soy-Based",
     categorySlug: "soy",
     size: "450g (10 Pcs)",
-    image: "/images/fowzia-soy-ruti-pack.jpg",
+    image: "/images/hd/pic_05.jpg",
     description: "Soft, diabetic-friendly whole wheat and soy flour rotis offering a low-glycemic, high-protein daily staple for health-conscious households.",
     features: ["Home Style Recipe", "High Protein & Dietary Fiber", "Zero Trans Fat", "Quick Ready-to-Heat"],
     isFeatured: true
@@ -145,7 +145,7 @@ export const PRODUCTS: Product[] = [
     category: "Soy-Based",
     categorySlug: "soy",
     size: "1kg",
-    image: "/images/fowzia-soybean-whole-grain.jpg",
+    image: "/images/hd/pic_06.jpg",
     description: "Premium whole grain soybeans sourced directly from local marginal farmers under Solidaridad Bangladesh and DAM supervision. Cleaned, graded, and packed for culinary and sprouting use.",
     features: ["Sourced from Local Farmers", "Non-GMO Pure Grain", "Solidaridad Bangladesh Supervised", "High in Essential Amino Acids"],
     isFeatured: false
@@ -158,7 +158,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy & Yogurt Drinks",
     categorySlug: "dairy-drinks",
     size: "1.5L",
-    image: "/images/fowzia-borhani-yogurt-drinks.jpg",
+    image: "/images/hd/pic_07.jpg",
     description: "Traditional spicy yogurt digestive beverage prepared with pure cow's milk, mint, mustard seed, green chilies, and aromatic spices. Perfect for festive feasts and family gatherings.",
     features: ["Pure Full Cream Milk Base", "Digestive Probiotic Enzymes", "Authentic Bangladeshi Recipe", "Party & Family Feast Size"],
     isFeatured: true
@@ -169,7 +169,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy & Yogurt Drinks",
     categorySlug: "dairy-drinks",
     size: "750ml",
-    image: "/images/fowzia-borhani-yogurt-drinks.jpg",
+    image: "/images/hd/pic_07.jpg",
     description: "Rich, tangy, aromatic Borhani formulated with natural digestive herbs and cultured curd. Ideal for dinners and weekend dining.",
     features: ["Natural Cultured Curd", "Rich Traditional Herb Blend", "Chilled Ready to Drink", "Digestive Friendly"],
     isFeatured: false
@@ -180,7 +180,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy & Yogurt Drinks",
     categorySlug: "dairy-drinks",
     size: "250ml",
-    image: "/images/fowzia-borhani-yogurt-drinks.jpg",
+    image: "/images/hd/pic_07.jpg",
     description: "Convenient single-serve bottle of authentic Fowzia Borhani for quick on-the-go refreshments, lunches, and individual portions.",
     features: ["Single Serve Bottle", "Tangy & Refreshing", "Zero Artificial Flavoring", "Hygienically Bottled"],
     isFeatured: false
@@ -191,7 +191,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy & Yogurt Drinks",
     categorySlug: "dairy-drinks",
     size: "250ml",
-    image: "/images/fowzia-borhani-yogurt-drinks.jpg",
+    image: "/images/hd/pic_07.jpg",
     description: "Traditional cooling yogurt buttermilk beverage made from fresh churned curd, lightly salted and seasoned to soothe digestion and beat the heat.",
     features: ["Light & Hydrating", "Natural Electrolytes", "Probiotic Cultures", "Cooling & Gut-Healthy"],
     isFeatured: false
@@ -204,7 +204,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy Desserts",
     categorySlug: "dairy-desserts",
     size: "1kg",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "Renowned Bangladeshi caramelized sweet yogurt set in authentic earthen clay pots. Slow-steamed full cream milk delivers velvety texture and rich caramel flavor.",
     features: ["Traditional Clay Pot Fermented", "Dense Cream Layer", "Natural Caramelized Sweetness", "Ideal for Celebrations"],
     isFeatured: true
@@ -215,7 +215,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy Desserts",
     categorySlug: "dairy-desserts",
     size: "500g",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "Luscious, creamy sweet yogurt crafted from pure whole milk, packed in clay pots to allow optimal breathing and moisture balance.",
     features: ["Pure Whole Milk", "Clay Pot Set", "Traditional Recipe", "Medium Family Size"],
     isFeatured: false
@@ -226,7 +226,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy Desserts",
     categorySlug: "dairy-desserts",
     size: "500g",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "A balanced delicacy combining the mild sweetness of caramelized curd with the tangy zest of natural yogurt fermentation. Great for raita or direct dessert.",
     features: ["Balanced Flavor Profile", "Cultured Probiotic Base", "Rich in Protein", "Versatile Table Curd"],
     isFeatured: false
@@ -237,7 +237,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy Desserts",
     categorySlug: "dairy-desserts",
     size: "500g",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "Pure, unsweetened probiotic sour yogurt made with live cultures. Essential for culinary cooking, meat tenderizing, marinades, and healthy weight management.",
     features: ["Unsweetened Pure Yogurt", "Live Active Probiotics", "Culinary Grade for Marinades", "Diabetic Friendly"],
     isFeatured: false
@@ -248,7 +248,7 @@ export const PRODUCTS: Product[] = [
     category: "Dairy Desserts",
     categorySlug: "dairy-desserts",
     size: "100ml",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "Individual cup portion of fresh Fowzia curd, ideal for personal snacking, school tiffin boxes, and single dessert servings.",
     features: ["Convenient Single Serving", "Sealed Freshness", "On-the-go Nutrition", "Hygienic Cup Pack"],
     isFeatured: false
@@ -261,7 +261,7 @@ export const PRODUCTS: Product[] = [
     category: "Cheese",
     categorySlug: "cheese",
     size: "250g",
-    image: "/images/fowzia-mozzarella-cheese.jpg",
+    image: "/images/hd/pic_11.jpg",
     description: "Freshly stretched artisanal mozzarella cheese crafted from 100% pure cow's milk. Boasts exceptional meltability, golden browning, and delicious stretch for pizzas and sandwiches.",
     features: ["100% Pure Milk Mozzarella", "Superior Stretch & Melt", "Rich in Calcium", "No Synthetic Oils"],
     isFeatured: true
@@ -274,7 +274,7 @@ export const PRODUCTS: Product[] = [
     category: "Frozen Foods",
     categorySlug: "frozen",
     size: "1kg",
-    image: "/images/fowzia-french-fries.jpg",
+    image: "/images/hd/pic_14.jpg",
     description: "Selected premium grade potatoes cut into uniform, crispy-finish fries. Flash frozen to lock in farm-fresh flavor and fluffy interior texture.",
     features: ["Uniform Golden Cut", "Crispy Outside, Fluffy Inside", "Quick Fry or Bake", "1kg Bulk Pack"],
     isFeatured: true
@@ -287,7 +287,7 @@ export const PRODUCTS: Product[] = [
     category: "Spices",
     categorySlug: "spices",
     size: "200g",
-    image: "/images/fowzia-spices-pack.jpg",
+    image: "/images/hd/pic_08.jpg",
     description: "Pure, sun-dried red chilies finely milled to deliver bright natural red color and balanced piquancy without artificial food coloring or adulterants.",
     features: ["100% Pure Red Chilies", "No Added Artificial Dyes", "Aromatic & Pungent", "Hygienic Jar Packaging"],
     isFeatured: false
@@ -298,7 +298,7 @@ export const PRODUCTS: Product[] = [
     category: "Spices",
     categorySlug: "spices",
     size: "200g",
-    image: "/images/fowzia-spices-pack.jpg",
+    image: "/images/hd/pic_08.jpg",
     description: "Sun-dried turmeric rhizomes ground under hygienic processing standards. Rich in natural curcumin, providing brilliant golden color and health benefits.",
     features: ["High Natural Curcumin", "Pure Ground Rhizomes", "Anti-inflammatory Properties", "Sealed Air-Tight Jar"],
     isFeatured: false
@@ -309,7 +309,7 @@ export const PRODUCTS: Product[] = [
     category: "Spices",
     categorySlug: "spices",
     size: "200g",
-    image: "/images/fowzia-spices-pack.jpg",
+    image: "/images/hd/pic_08.jpg",
     description: "Fragrant, freshly roasted and milled coriander seeds providing an earthy, citrusy aroma and authentic taste to curries and savory culinary creations.",
     features: ["Aromatic Roasted Seeds", "Fine Culinary Texture", "Freshness Sealed", "Unadulterated Quality"],
     isFeatured: false
@@ -341,7 +341,7 @@ export const CATEGORIES = [
     id: "dairy-drinks",
     name: "Dairy & Yogurt Drinks",
     description: "Traditional refreshing beverages including artisanal Borhani and soothing Matha made with cultured dairy.",
-    image: "/images/fowzia-borhani-yogurt-drinks.jpg",
+    image: "/images/hd/pic_07.jpg",
     itemCount: "4 Products",
     color: "from-rose-700/90 to-red-950/90"
   },
@@ -349,7 +349,7 @@ export const CATEGORIES = [
     id: "dairy-desserts",
     name: "Dairy Desserts",
     description: "Caramelized clay-pot Sweet Curd (Misti Doi), versatile Sweet & Sour Curd, and culinary Tok Doi.",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     itemCount: "5 Products",
     color: "from-yellow-700/90 to-amber-950/90"
   },
@@ -357,7 +357,7 @@ export const CATEGORIES = [
     id: "cheese",
     name: "Artisanal Cheese",
     description: "Fowzia Special Mozzarella Cheese crafted from 100% pure cow's milk for outstanding stretch and melt.",
-    image: "/images/fowzia-mozzarella-cheese.jpg",
+    image: "/images/hd/pic_11.jpg",
     itemCount: "1 Product",
     color: "from-amber-500/90 to-yellow-800/90"
   },
@@ -365,7 +365,7 @@ export const CATEGORIES = [
     id: "frozen",
     name: "Frozen Quick Foods",
     description: "Convenient frozen solutions including golden crispy French Fries ready to fry or bake.",
-    image: "/images/fowzia-french-fries.jpg",
+    image: "/images/hd/pic_14.jpg",
     itemCount: "1 Product",
     color: "from-orange-600/90 to-amber-950/90"
   },
@@ -373,7 +373,7 @@ export const CATEGORIES = [
     id: "spices",
     name: "Essential Spices",
     description: "Pure, unadulterated ground chili, turmeric, and coriander powders packed with natural aroma.",
-    image: "/images/fowzia-spices-pack.jpg",
+    image: "/images/hd/pic_08.jpg",
     itemCount: "3 Products",
     color: "from-red-700/90 to-burgundy-dark/90"
   }
@@ -537,21 +537,21 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: "gal-2",
     title: "Soy Protein Ball Box Packaging",
     category: "Products",
-    image: "/images/fowzia-soy-protein-ball-pack.jpg",
+    image: "/images/hd/pic_03.jpg",
     description: "High protein meat-alternative soy protein ball packaging."
   },
   {
     id: "gal-3",
     title: "Fowzia Artisanal Dairy Curds",
     category: "Products",
-    image: "/images/fowzia-sweet-sour-curd-pots.jpg",
+    image: "/images/hd/pic_09.jpg",
     description: "Traditional earthen pots of sweet and sour yogurt curds."
   },
   {
     id: "gal-4",
     title: "Fowzia Mozzarella Cheese & Shreds",
     category: "Products",
-    image: "/images/fowzia-mozzarella-cheese.jpg",
+    image: "/images/hd/pic_11.jpg",
     description: "Pure milk mozzarella block with freshly grated cheese."
   },
   {
@@ -757,7 +757,7 @@ export const INITIATIVES = [
     description: "The core manufacturing engine founded in 2014. Focuses on value-addition to soy and dairy, sourcing raw milk and soybeans directly from marginal farmers under DAM and Solidaridad supervision to produce 19 distinct wholesome food products.",
     badge: "Core Enterprise",
     accentColor: "from-burgundy to-burgundy-dark",
-    image: "/images/fowzia-tofu-box.jpg",
+    image: "/images/hd/pic_02.jpg",
     link: "/about",
     highlights: [
       "10+ years of manufacturing experience",

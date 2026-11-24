@@ -9,10 +9,9 @@ import {
   ArrowRight, 
   ChevronLeft, 
   ChevronRight, 
-  Users, 
   CheckCircle2, 
   HeartHandshake,
-  ExternalLink
+  Users
 } from 'lucide-react';
 import { COMPANY_INFO } from '../../data/companyData';
 
@@ -25,7 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // 4 Corporate Profile Showcases (Clean, Soft Orange & White Aesthetics)
+  // 4 Corporate Showcases using High-Resolution Original Camera Photos (NO Blurry PDF Crops!)
   const corporateSlides = [
     {
       badge: 'Agro-Processing & Soy Innovation',
@@ -33,8 +32,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
       title: 'High-Protein Soy Nutrition',
       subtitle: 'Tofu, Soy Protein Balls, Soy Paratha & Ruti',
       description: 'Manufactured with high-protein non-GMO soybeans under ISO 22000:2018 hygienic standards. 100% plant-based, zero cholesterol, and rich in natural isoflavones.',
-      image: '/images/fowzia-soy-protein-ball-pack.jpg',
-      subImage: '/images/fowzia-tofu-box.jpg',
+      image: '/images/hd/pic_02.jpg', // Genuine 2000x2000 High-Res Camera Photo
+      subImage: '/images/hd/pic_03.jpg',
       tagline: '100% Plant-Based Protein',
       metric: 'Rich in Protein & Calcium',
       link: '/products?category=soy',
@@ -47,8 +46,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
       title: 'Fowzia Special Borhani & Curds',
       subtitle: 'Pure Cow Milk, Matha & Cultured Curds',
       description: 'Prepared from pure cow milk and enriched with natural digestive herbs, mint, and mustard seeds. Available in 1.5L party feasts, 750ml, and 250ml bottles.',
-      image: '/images/fowzia-borhani-yogurt-drinks.jpg',
-      subImage: '/images/fowzia-sweet-sour-curd-pots.jpg',
+      image: '/images/hd/pic_07.jpg', // Genuine High-Res Camera Photo (766 KB)
+      subImage: '/images/hd/pic_05.jpg',
       tagline: 'Authentic Traditional Recipe',
       metric: 'Live Probiotic Cultures',
       link: '/products?category=dairy-drinks',
@@ -61,23 +60,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
       title: 'Fowzia Mozzarella & Fries',
       subtitle: '250g Stretchy Cheese & 1kg French Fries',
       description: 'Chef-grade mozzarella cheese crafted with 100% pure cow milk for optimal stretch, paired with golden crispy french fries ready in minutes.',
-      image: '/images/fowzia-mozzarella-cheese.jpg',
-      subImage: '/images/fowzia-french-fries.jpg',
+      image: '/images/hd/pic_11.jpg', // Genuine High-Res Camera Photo
+      subImage: '/images/hd/pic_14.jpg',
       tagline: '100% Pure Cow Milk Mozzarella',
-      metric: 'Chef-Grade Quality',
+      metric: 'Chef-Grade Stretch & Taste',
       link: '/products?category=cheese',
       cardTheme: 'from-orange-50 via-white to-amber-50',
       pillBg: 'bg-orange-100 text-amber-900 border-orange-200'
     },
     {
-      badge: 'Capacity Building & Social Impact',
+      badge: 'Executive Leadership & Empowerment',
       category: 'FSDI Training Institute',
       title: 'Empowering ~35,000 Beneficiaries',
-      subtitle: 'Entrepreneurship & Skills Development Since 2023',
+      subtitle: 'Led by World Bank Awardee Mrs. Afroza Sultana',
       description: 'Practical agribusiness training, food safety certification, and women entrepreneurship development supported by DAM, BAU Gazipur, and the World Bank.',
-      image: '/images/fsdi-women-entrepreneurs-training-1.jpg',
-      subImage: '/images/world-bank-best-entrepreneur-trophy.jpg',
-      tagline: 'Supported by World Bank & LDDP',
+      image: '/images/leadership/afroza-sultana-proprietor.jpg', // High-Res Authority Photo
+      subImage: '/images/leadership/forman-ali-bhuiyan-ceo.jpg',
+      tagline: 'World Bank & LDDP Supported',
       metric: '~35,000 Women & Youth Trained',
       link: '/fsdi',
       cardTheme: 'from-amber-50 via-white to-orange-50',
@@ -99,7 +98,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#FFF9F3] to-[#FFF1E6] border-b border-orange-100 py-8 sm:py-12 lg:py-16">
       
-      {/* Soft Ambient Light Glows (Halka Orange & Warm Golden Tone) */}
+      {/* Soft Ambient Light Glows (White & Warm Orange Theme) */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-200/35 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-1/2 right-10 w-72 h-72 bg-rose-100/30 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -140,9 +139,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
 
             {/* Official Company Description */}
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl font-normal">
-              Founded by <span className="font-semibold text-slate-900">Mrs. Afroza Sultana</span> (World Bank Best Women Entrepreneur Awardee), 
-              <span className="font-semibold text-slate-900"> Fowzia Healthy Food Products</span> delivers nutritious, hygienic, and affordable 
-              soy and pure dairy foods while empowering thousands of women farmers and rural youth entrepreneurs.
+              Founded by <span className="font-semibold text-slate-900">Mrs. Afroza Sultana</span> (World Bank Best Women Entrepreneur Awardee) and managed by CEO <span className="font-semibold text-slate-900">Md Forman Ali Bhuiyan</span>, 
+              <span className="font-semibold text-slate-900"> Fowzia Healthy Food Products</span> transforms farm-fresh soybeans and pure cow milk into wholesome foods under stringent ISO 22000:2018 hygienic standards.
             </p>
 
             {/* Credibility Key Facts (Clean Soft-White Responsive Grid) */}
@@ -222,6 +220,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
 
           {/* =========================================
               RIGHT COLUMN: CLEAN CORPORATE SHOWCASE SLIDER
+              (Using Crisp High-Resolution Camera Photos)
              ========================================= */}
           <div className="lg:col-span-5 relative">
             
@@ -258,22 +257,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPDF, onOpenInqui
                 </p>
               </div>
 
-              {/* Visual Presentation Area: Clean Product Composition */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl bg-white p-4 border border-orange-100 shadow-sm flex items-center justify-center overflow-hidden my-4 group">
+              {/* Visual Presentation Area: High-Res Camera Photo */}
+              <div className="relative w-full aspect-[4/3] rounded-2xl bg-slate-900 overflow-hidden border border-orange-100 shadow-md my-4 group">
                 
-                {/* Main Product Image */}
+                {/* Main High-Resolution Photo */}
                 <img
                   src={activeSlide.image}
                   alt={activeSlide.title}
-                  className="max-h-full max-w-full object-contain filter drop-shadow-md transform group-hover:scale-105 transition-transform duration-500 rounded-xl"
+                  className="w-full h-full object-cover object-center filter group-hover:scale-105 transition-transform duration-700 brightness-[0.95]"
                 />
 
                 {/* Secondary Inset Thumbnail */}
-                <div className="absolute bottom-2 right-2 w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white p-1 border-2 border-amber-300 shadow-md hidden sm:block">
+                <div className="absolute bottom-2 right-2 w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-white border-2 border-amber-400 shadow-lg hidden sm:block">
                   <img
                     src={activeSlide.subImage}
                     alt="Secondary item"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 

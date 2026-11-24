@@ -31,47 +31,51 @@ export const SocialImpactSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-[#FFFDF9] relative overflow-hidden border-b border-orange-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Narrative Column (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-6 text-left">
             <div className="space-y-2">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-burgundy/10 text-burgundy text-xs font-bold uppercase tracking-wider">
-                <Heart className="w-3.5 h-3.5 text-gold-dark" />
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-300 text-amber-950 text-xs font-bold uppercase tracking-wider">
+                <Heart className="w-3.5 h-3.5 text-rose-600 shrink-0" />
                 Community & Social Impact
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-darkText tracking-tight leading-tight">
-                Empowering Communities Through <span className="text-burgundy">Nutritious Food</span> and Entrepreneurship
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-slate-900 tracking-tight leading-tight text-balance-header">
+                Empowering Communities Through{' '}
+                <span className="text-[#9E1B32]">
+                  Nutritious Food
+                </span>{' '}
+                and Entrepreneurship
               </h2>
             </div>
 
-            <p className="text-sm sm:text-base text-mutedText leading-relaxed">
-              At Fowzia Healthy Food Products, business success is intrinsically tied to community well-being. By partnering with the Department of Agricultural Marketing (DAM) and the World Bank under SACP-RAINS and PARTNER-APCU-DAM projects, we have transformed ideas into sustainable livelihoods for thousands of women and youth across Bangladesh.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              At Fowzia Healthy Food Products, commercial success is inextricably linked with community well-being. By collaborating with the Department of Agricultural Marketing (DAM) and the World Bank under SACP-RAINS and PARTNER-APCU-DAM projects, we have transformed ideas into sustainable livelihoods for ~35,000 women and youth across Bangladesh.
             </p>
 
             {/* Impact Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               {impacts.map((imp, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-cream/60 border border-gold/20 space-y-1">
-                  <div className="flex items-center gap-2 font-bold text-xs text-darkText">
-                    <CheckCircle2 className="w-4 h-4 text-burgundy shrink-0" />
+                <div key={idx} className="p-3.5 rounded-2xl bg-white border border-orange-200/90 shadow-2xs space-y-1">
+                  <div className="flex items-center gap-2 font-black text-xs text-slate-900">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>{imp.title}</span>
                   </div>
-                  <p className="text-[11px] text-mutedText leading-relaxed pl-6">
+                  <p className="text-[11px] text-slate-600 leading-relaxed pl-6 font-normal">
                     {imp.desc}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 flex items-center gap-4">
+            <div className="pt-2 flex items-center gap-4">
               <Link
                 to="/fsdi"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-burgundy hover:bg-burgundy-dark text-white font-semibold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#9E1B32] to-[#7A0C22] hover:from-[#7A0C22] hover:to-[#9E1B32] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
               >
-                <span>Learn More About FSDI</span>
+                <span>Learn More About FSDI Institute</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -81,28 +85,28 @@ export const SocialImpactSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Primary Photo: Women in Training */}
-              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-cream">
+              {/* Primary Photo: High-Res Camera Photo of Training Session */}
+              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-900">
                 <img
-                  src="/images/fsdi-women-entrepreneurs-training-1.jpg"
+                  src="/images/hd/pic_01.jpg"
                   alt="FSDI Women Entrepreneurs Training"
-                  className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-80 sm:h-96 object-cover hover:scale-105 transition-transform duration-700 brightness-[0.95]"
                 />
-                <div className="p-4 bg-white border-t border-gold/20">
+                <div className="p-4 bg-white border-t border-orange-200 text-left">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-burgundy">FSDI Training Class</span>
-                    <span className="text-gold-dark font-semibold">DAM & World Bank Assisted</span>
+                    <span className="font-bold text-[#9E1B32]">FSDI Training Class</span>
+                    <span className="text-amber-700 font-bold">DAM & World Bank Assisted</span>
                   </div>
-                  <p className="text-[11px] text-mutedText mt-1">
-                    Hands-on skills development and business mentoring for women entrepreneurs.
+                  <p className="text-[11px] text-slate-600 mt-1 font-normal">
+                    Hands-on practical skills development and business mentoring for women entrepreneurs.
                   </p>
                 </div>
               </div>
 
               {/* Stat Overlay Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-gradient-to-r from-gold-dark to-gold text-burgundy-dark p-4 rounded-2xl shadow-xl border-2 border-white">
-                <div className="text-2xl font-black">~35,000</div>
-                <div className="text-[10px] font-bold uppercase tracking-wider">Beneficiaries Trained</div>
+              <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 p-4 rounded-2xl shadow-lg border-2 border-white text-left">
+                <div className="text-2xl font-black leading-none">~35,000</div>
+                <div className="text-[10px] font-bold uppercase tracking-wider mt-1">Beneficiaries Trained</div>
               </div>
 
             </div>
