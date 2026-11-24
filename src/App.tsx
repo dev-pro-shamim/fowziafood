@@ -24,8 +24,8 @@ export function App() {
     <BrowserRouter>
       <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-gold selection:text-slate-950">
         <ScrollToTop />
-        <AnnouncementBar onOpenPDF={() => setIsPDFOpen(true)} />
-        <Navbar onOpenPDF={() => setIsPDFOpen(true)} />
+        <AnnouncementBar />
+        <Navbar />
         
         <main className="flex-grow">
           <Routes>
